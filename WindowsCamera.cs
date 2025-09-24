@@ -14,11 +14,9 @@ namespace WindowsCamera
     {
         private VideoCapture device;
         private Mat frame;
-        private int newWidth = 0, newHeight = 0, index;
 
         public Camera(int index, int width, int height)
         {
-            this.index = index;
             device = new VideoCapture(index);
 
             if (!device.IsOpened())
@@ -39,22 +37,23 @@ namespace WindowsCamera
 
         public void resize(int width, int height)
         {
-            newWidth = width;
-            newHeight = height;
+            if (width % 2 != 0)
+            {
+                width++;
+            }
+
+            int remainder = height % 3;
+            if (remainder != 0)
+            {
+                height += (3 - remainder);
+            }
+
+            device.Set(VideoCaptureProperties.FrameWidth, width);
+            device.Set(VideoCaptureProperties.FrameHeight, height);
         }
 
         public Bitmap GetBitmap()
         {
-            if (newWidth != 0 || newHeight != 0)
-            {
-                device = new VideoCapture(index);
-                device.Set(VideoCaptureProperties.FrameWidth, newWidth);
-                device.Set(VideoCaptureProperties.FrameHeight, newHeight);
-                frame = new Mat();
-                newWidth = 0;
-                newHeight = 0;
-            }
-
             if (device.IsOpened())
             {
                 device.Read(frame);
