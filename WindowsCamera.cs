@@ -24,8 +24,7 @@ namespace WindowsCamera
                 throw new Exception("Cannot open camera!");
             }
 
-            device.Set(VideoCaptureProperties.FrameWidth, width);
-            device.Set(VideoCaptureProperties.FrameHeight, height);
+            resize(width, height);
 
             frame = new Mat();
         }

@@ -29,7 +29,6 @@ namespace ImageProcessingActivity
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.pictureBoxImage = new System.Windows.Forms.PictureBox();
             this.pictureBoxBackground = new System.Windows.Forms.PictureBox();
             this.pictureBoxOutput = new System.Windows.Forms.PictureBox();
@@ -40,7 +39,6 @@ namespace ImageProcessingActivity
             this.returnToPart1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.buttonCamera = new System.Windows.Forms.Button();
-            this.cameraTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOutput)).BeginInit();
@@ -135,10 +133,6 @@ namespace ImageProcessingActivity
             this.buttonCamera.UseVisualStyleBackColor = true;
             this.buttonCamera.Click += new System.EventHandler(this.buttonCamera_Click);
             // 
-            // cameraTimer
-            // 
-            this.cameraTimer.Tick += new System.EventHandler(this.cameraTimer_Tick);
-            // 
             // SubtractionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,6 +174,5 @@ namespace ImageProcessingActivity
         private System.Windows.Forms.ToolStripMenuItem returnToPart1ToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button buttonCamera;
-        private System.Windows.Forms.Timer cameraTimer;
     }
 }
