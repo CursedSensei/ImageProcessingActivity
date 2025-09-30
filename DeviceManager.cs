@@ -22,6 +22,8 @@ namespace WebCamLib
 
         public static Device[] GetAllDevices()
         {
+            devices.Clear();
+
             String dName = "".PadRight(100);
             String dVersion = "".PadRight(100);
 
