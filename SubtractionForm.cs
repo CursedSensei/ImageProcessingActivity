@@ -141,7 +141,7 @@ namespace ImageProcessingActivity
                         pictureBoxOutput.Image = resultImage;
                     }));
                 }
-                catch (ObjectDisposedException) { }
+                catch (InvalidOperationException) { }
             }
 
             try
@@ -153,7 +153,7 @@ namespace ImageProcessingActivity
                     pictureBoxImage.Image = imageB;
                 }));
             }
-            catch (ObjectDisposedException) { }
+            catch (InvalidOperationException) { }
         }
 
         private void buttonSubtract_Click(object sender, EventArgs e)
