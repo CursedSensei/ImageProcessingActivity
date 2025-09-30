@@ -1,9 +1,9 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace ConvMatrix
+namespace ConvolutionMatrix
 {
-    class ConvMatrix
+    public class ConvMatrix
     {
         public int TopLeft = 0, TopMid = 0, TopRight = 0;
         public int MidLeft = 0, Pixel = 1, MidRight = 0;
@@ -11,13 +11,32 @@ namespace ConvMatrix
         public int Factor = 1;
         public int Offset = 0;
 
+        public ConvMatrix(
+                int TopLeft, int TopMid, int TopRight,
+                int MidLeft, int Pixel, int MidRight,
+                int BottomLeft, int BottomMid, int BottomRight
+            )
+        {
+            this.TopLeft = TopLeft;
+            this.TopMid = TopMid;
+            this.TopRight = TopRight;
+            this.MidLeft = MidLeft;
+            this.Pixel = Pixel;
+            this.MidRight = MidRight;
+            this.BottomLeft = BottomLeft;
+            this.BottomMid = BottomMid;
+            this.BottomRight = BottomRight;
+        }
+
+        public ConvMatrix() { }
+
         public void SetAll(int nVal)
         {
             TopLeft = TopMid = TopRight = MidLeft = Pixel = MidRight =
                       BottomLeft = BottomMid = BottomRight = nVal;
         }
 
-        public bool Conv3x3(Bitmap b)
+        public bool Conv3x3(Bitmap bSrc, Bitmap b)
         {
             ConvMatrix m = this;
 
@@ -26,7 +45,7 @@ namespace ConvMatrix
                 return false;
 
             // GDI+ still lies to us - the return format is BGR, NOT RGB.  
-            Bitmap bSrc = (Bitmap)b.Clone();
+            // Bitmap bSrc = (Bitmap)b.Clone();
 
             BitmapData bmData = b.LockBits(new Rectangle(0, 0, b.Width, b.Height),
                                 ImageLockMode.ReadWrite,

@@ -84,8 +84,10 @@
       <DependentUpon>CameraDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="ConvMatrix.cs" />
+    <Compile Include="ConvolutionAlgo.cs" />
     <Compile Include="Device.cs" />
     <Compile Include="DeviceManager.cs" />
+    <Compile Include="ManipulationAlgo.cs" />
     <Compile Include="WindowsCamera.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
