@@ -141,7 +141,10 @@ namespace ImageProcessingActivity
                         pictureBoxOutput.Image = resultImage;
                     }));
                 }
-                catch (InvalidOperationException) { }
+                catch (InvalidOperationException)
+                {
+                    resultImage.Dispose();
+                }
             }
 
             try
@@ -153,7 +156,10 @@ namespace ImageProcessingActivity
                     pictureBoxImage.Image = imageB;
                 }));
             }
-            catch (InvalidOperationException) { }
+            catch (InvalidOperationException)
+            {
+                frame.Dispose();
+            }
         }
 
         private void buttonSubtract_Click(object sender, EventArgs e)
@@ -199,6 +205,14 @@ namespace ImageProcessingActivity
         private void startTimer()
         {
             cameraThread.Change(0, 100);
+        }
+
+        private void SubtractionForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            stopTimer();
+
+            pictureBoxImage.Image.Dispose();
+            pictureBoxOutput.Image.Dispose();
         }
 
         private void stopTimer()

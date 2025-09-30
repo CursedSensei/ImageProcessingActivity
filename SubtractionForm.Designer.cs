@@ -151,6 +151,7 @@ namespace ImageProcessingActivity
             this.MaximizeBox = false;
             this.Name = "SubtractionForm";
             this.Text = "Subtraction";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SubtractionForm_FormClosing);
             this.Load += new System.EventHandler(this.SubtractionForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackground)).EndInit();
