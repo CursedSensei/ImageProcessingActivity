@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Management;
 using WebCamLib;
+using System.Threading;
 
 namespace WindowsCamera
 {
@@ -14,6 +15,7 @@ namespace WindowsCamera
     {
         private VideoCapture device;
         private Mat frame;
+        private int width, height;
 
         public Camera(int index, int width, int height)
         {
@@ -38,29 +40,38 @@ namespace WindowsCamera
         {
             if (width % 2 != 0)
             {
-                width++;
+                width--;
             }
 
             int remainder = height % 3;
             if (remainder != 0)
             {
-                height += (3 - remainder);
+                height -= remainder;
             }
 
-            device.Set(VideoCaptureProperties.FrameWidth, width);
-            device.Set(VideoCaptureProperties.FrameHeight, height);
+            lock (this)
+            {
+                device.Set(VideoCaptureProperties.FrameWidth, width);
+                device.Set(VideoCaptureProperties.FrameHeight, height);
+
+                this.width = width;
+                this.height = height;
+            }
         }
 
         public Bitmap GetBitmap()
         {
-            if (device.IsOpened())
+            lock (this)
             {
-                device.Read(frame);
-            }
+                if (device.IsOpened())
+                {
+                    device.Read(frame);
+                }
 
-            if (frame.Empty())
-            {
-                return new Bitmap(device.FrameWidth, device.FrameHeight);
+                if (frame.Empty())
+                {
+                    return new Bitmap(width, height);
+                }
             }
 
             return frame.ToBitmap();

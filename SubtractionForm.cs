@@ -50,6 +50,7 @@ namespace ImageProcessingActivity
                 }
 
                 imageB = new Bitmap(openFileDialog1.FileName);
+                pictureBoxImage.Image.Dispose();
                 pictureBoxImage.Image = imageB;
             }
         }
@@ -59,6 +60,7 @@ namespace ImageProcessingActivity
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 imageA = new Bitmap(openFileDialog1.FileName);
+                pictureBoxBackground.Image.Dispose();
                 pictureBoxBackground.Image = imageA;
 
                 if (device != null)
@@ -89,6 +91,7 @@ namespace ImageProcessingActivity
             }
 
             imageB = device.GetBitmap();
+            pictureBoxImage.Image.Dispose();
             pictureBoxImage.Image = imageB;
             processSubtractFlag = false;
             startTimer();
@@ -97,12 +100,6 @@ namespace ImageProcessingActivity
         private void cameraTimer_Tick(object state)
         {
             Bitmap frame = device.GetBitmap();
-            imageB = new Bitmap(frame);
-
-            this.Invoke(new Action(() => 
-            {
-                pictureBoxImage.Image = imageB;
-            }));
 
             if (processSubtractFlag)
             {
@@ -135,9 +132,28 @@ namespace ImageProcessingActivity
                     }
                 }
 
+                oldImage.Dispose();
 
-                this.Invoke(new Action(() => pictureBoxOutput.Image = resultImage));
+                try
+                {
+                    this.Invoke(new Action(() => {
+                        pictureBoxOutput.Image.Dispose();
+                        pictureBoxOutput.Image = resultImage;
+                    }));
+                }
+                catch (ObjectDisposedException) { }
             }
+
+            try
+            {
+                this.Invoke(new Action(() =>
+                {
+                    imageB = frame;
+                    pictureBoxImage.Image.Dispose();
+                    pictureBoxImage.Image = imageB;
+                }));
+            }
+            catch (ObjectDisposedException) { }
         }
 
         private void buttonSubtract_Click(object sender, EventArgs e)
@@ -176,6 +192,7 @@ namespace ImageProcessingActivity
                 }
             }
 
+            pictureBoxOutput.Image.Dispose();
             pictureBoxOutput.Image = resultImage;
         }
 
