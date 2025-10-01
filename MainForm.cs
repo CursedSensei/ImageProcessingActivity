@@ -14,6 +14,10 @@ namespace ImageProcessingActivity
         private AlgorithmAction cameraAction = null;
         private Timer cameraThread;
         private Camera device = null;
+        private int cameraDelay = 100;
+        private bool cameraShowFps = false;
+        private int cameraFps = 0;
+        private long cameraLastFps = 0;
 
         public MainForm()
         {
@@ -61,6 +65,7 @@ namespace ImageProcessingActivity
                         pictureBoxInput.Image.Dispose();
                         pictureBoxInput.Image = frame;
                         setOutputImage(output);
+                        updateFps();
                     }));
                 }
                 catch (InvalidOperationException)
@@ -76,6 +81,7 @@ namespace ImageProcessingActivity
                     this.Invoke(new Action(() => {
                         pictureBoxInput.Image.Dispose();
                         pictureBoxInput.Image = frame;
+                        updateFps();
                     }));
                 }
                 catch (InvalidOperationException)
@@ -171,13 +177,13 @@ namespace ImageProcessingActivity
 
         private void startTimer()
         {
-            cameraThread.Change(0, 100);
+            cameraThread.Change(0, cameraDelay);
         }
 
         private void stopTimer()
         {
             if (device == null) return;
-
+            cameraFps = 0;
             cameraThread.Change(Timeout.Infinite, Timeout.Infinite);
             device.Close();
             device = null;
@@ -193,5 +199,81 @@ namespace ImageProcessingActivity
         private void lossyToolStripMenuItem_Click(object sender, EventArgs e) => handleToolStrip(Algorithm.embossLossy);
         private void horizontalOnlyToolStripMenuItem_Click(object sender, EventArgs e) => handleToolStrip(Algorithm.embossHorizontal);
         private void verticalOnlyToolStripMenuItem_Click(object sender, EventArgs e) => handleToolStrip(Algorithm.embossVertical);
+
+        private void showFpsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cameraFps = 0;
+            cameraLastFps = 0;
+            cameraShowFps = !cameraShowFps;
+
+            ((ToolStripMenuItem)sender).Checked = cameraShowFps;
+            fpsLabel.Visible = cameraShowFps;
+            
+        }
+
+        private void msToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cameraDelay = 100;
+
+            if (device != null)
+            {
+                startTimer();
+            }
+        }
+
+        private void msToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            cameraDelay = 50;
+
+            if (device != null)
+            {
+                startTimer();
+            }
+        }
+
+        private void msToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            cameraDelay = 15;
+
+            if (device != null)
+            {
+                startTimer();
+            }
+        }
+
+        private void msToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            cameraDelay = 10;
+
+            if (device != null)
+            {
+                startTimer();
+            }
+        }
+
+        private void msToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            cameraDelay = 3;
+
+            if (device != null)
+            {
+                startTimer();
+            }
+        }
+
+        private void updateFps()
+        {
+            if (!cameraShowFps) return;
+
+            cameraFps++;
+            long currentTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+
+            if (currentTime - cameraLastFps >= 1)
+            {
+                fpsLabel.Text = string.Format("Fps: {0}", cameraFps);
+                cameraLastFps = currentTime;
+                cameraFps = 0;
+            }
+        }
     }
 }

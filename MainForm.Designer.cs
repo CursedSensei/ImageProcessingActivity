@@ -47,10 +47,6 @@ namespace ImageProcessingActivity
             this.gaussianBlurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shapenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.meanRemovalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBoxInput = new System.Windows.Forms.PictureBox();
-            this.pictureBoxOutput = new System.Windows.Forms.PictureBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.embossLaplascianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.laplascianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horizontalVerticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +54,19 @@ namespace ImageProcessingActivity
             this.lossyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horizontalOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxInput = new System.Windows.Forms.PictureBox();
+            this.pictureBoxOutput = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cameraDelayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showFpsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fpsLabel = new System.Windows.Forms.Label();
+            this.msToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.msToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.msToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.msToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOutput)).BeginInit();
@@ -68,7 +77,8 @@ namespace ImageProcessingActivity
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.processToolStripMenuItem,
-            this.convolutionToolStripMenuItem});
+            this.convolutionToolStripMenuItem,
+            this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(882, 24);
@@ -184,30 +194,85 @@ namespace ImageProcessingActivity
             // smoothToolStripMenuItem
             // 
             this.smoothToolStripMenuItem.Name = "smoothToolStripMenuItem";
-            this.smoothToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.smoothToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.smoothToolStripMenuItem.Text = "Smooth";
             this.smoothToolStripMenuItem.Click += new System.EventHandler(this.smoothToolStripMenuItem_Click);
             // 
             // gaussianBlurToolStripMenuItem
             // 
             this.gaussianBlurToolStripMenuItem.Name = "gaussianBlurToolStripMenuItem";
-            this.gaussianBlurToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gaussianBlurToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.gaussianBlurToolStripMenuItem.Text = "Gaussian Blur";
             this.gaussianBlurToolStripMenuItem.Click += new System.EventHandler(this.gaussianBlurToolStripMenuItem_Click);
             // 
             // shapenToolStripMenuItem
             // 
             this.shapenToolStripMenuItem.Name = "shapenToolStripMenuItem";
-            this.shapenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shapenToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.shapenToolStripMenuItem.Text = "Shapen";
             this.shapenToolStripMenuItem.Click += new System.EventHandler(this.shapenToolStripMenuItem_Click);
             // 
             // meanRemovalToolStripMenuItem
             // 
             this.meanRemovalToolStripMenuItem.Name = "meanRemovalToolStripMenuItem";
-            this.meanRemovalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.meanRemovalToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.meanRemovalToolStripMenuItem.Text = "Mean Removal";
             this.meanRemovalToolStripMenuItem.Click += new System.EventHandler(this.meanRemovalToolStripMenuItem_Click);
+            // 
+            // embossLaplascianToolStripMenuItem
+            // 
+            this.embossLaplascianToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.laplascianToolStripMenuItem,
+            this.horizontalVerticalToolStripMenuItem,
+            this.allDirectionsToolStripMenuItem,
+            this.lossyToolStripMenuItem,
+            this.horizontalOnlyToolStripMenuItem,
+            this.verticalOnlyToolStripMenuItem});
+            this.embossLaplascianToolStripMenuItem.Name = "embossLaplascianToolStripMenuItem";
+            this.embossLaplascianToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.embossLaplascianToolStripMenuItem.Text = "Emboss";
+            // 
+            // laplascianToolStripMenuItem
+            // 
+            this.laplascianToolStripMenuItem.Name = "laplascianToolStripMenuItem";
+            this.laplascianToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.laplascianToolStripMenuItem.Text = "Laplascian";
+            this.laplascianToolStripMenuItem.Click += new System.EventHandler(this.laplascianToolStripMenuItem_Click);
+            // 
+            // horizontalVerticalToolStripMenuItem
+            // 
+            this.horizontalVerticalToolStripMenuItem.Name = "horizontalVerticalToolStripMenuItem";
+            this.horizontalVerticalToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.horizontalVerticalToolStripMenuItem.Text = "Horizontal/Vertical";
+            this.horizontalVerticalToolStripMenuItem.Click += new System.EventHandler(this.horizontalVerticalToolStripMenuItem_Click);
+            // 
+            // allDirectionsToolStripMenuItem
+            // 
+            this.allDirectionsToolStripMenuItem.Name = "allDirectionsToolStripMenuItem";
+            this.allDirectionsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.allDirectionsToolStripMenuItem.Text = "All Directions";
+            this.allDirectionsToolStripMenuItem.Click += new System.EventHandler(this.allDirectionsToolStripMenuItem_Click);
+            // 
+            // lossyToolStripMenuItem
+            // 
+            this.lossyToolStripMenuItem.Name = "lossyToolStripMenuItem";
+            this.lossyToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.lossyToolStripMenuItem.Text = "Lossy";
+            this.lossyToolStripMenuItem.Click += new System.EventHandler(this.lossyToolStripMenuItem_Click);
+            // 
+            // horizontalOnlyToolStripMenuItem
+            // 
+            this.horizontalOnlyToolStripMenuItem.Name = "horizontalOnlyToolStripMenuItem";
+            this.horizontalOnlyToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.horizontalOnlyToolStripMenuItem.Text = "Horizontal Only";
+            this.horizontalOnlyToolStripMenuItem.Click += new System.EventHandler(this.horizontalOnlyToolStripMenuItem_Click);
+            // 
+            // verticalOnlyToolStripMenuItem
+            // 
+            this.verticalOnlyToolStripMenuItem.Name = "verticalOnlyToolStripMenuItem";
+            this.verticalOnlyToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.verticalOnlyToolStripMenuItem.Text = "Vertical Only";
+            this.verticalOnlyToolStripMenuItem.Click += new System.EventHandler(this.verticalOnlyToolStripMenuItem_Click);
             // 
             // pictureBoxInput
             // 
@@ -238,66 +303,86 @@ namespace ImageProcessingActivity
             this.saveFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp;*.tiff";
             this.saveFileDialog1.Title = "Save Image File";
             // 
-            // embossLaplascianToolStripMenuItem
+            // settingsToolStripMenuItem
             // 
-            this.embossLaplascianToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.laplascianToolStripMenuItem,
-            this.horizontalVerticalToolStripMenuItem,
-            this.allDirectionsToolStripMenuItem,
-            this.lossyToolStripMenuItem,
-            this.horizontalOnlyToolStripMenuItem,
-            this.verticalOnlyToolStripMenuItem});
-            this.embossLaplascianToolStripMenuItem.Name = "embossLaplascianToolStripMenuItem";
-            this.embossLaplascianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.embossLaplascianToolStripMenuItem.Text = "Emboss";
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cameraDelayToolStripMenuItem,
+            this.showFpsToolStripMenuItem});
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
             // 
-            // laplascianToolStripMenuItem
+            // cameraDelayToolStripMenuItem
             // 
-            this.laplascianToolStripMenuItem.Name = "laplascianToolStripMenuItem";
-            this.laplascianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.laplascianToolStripMenuItem.Text = "Laplascian";
-            this.laplascianToolStripMenuItem.Click += new System.EventHandler(this.laplascianToolStripMenuItem_Click);
+            this.cameraDelayToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msToolStripMenuItem,
+            this.msToolStripMenuItem1,
+            this.msToolStripMenuItem2,
+            this.msToolStripMenuItem3,
+            this.msToolStripMenuItem4});
+            this.cameraDelayToolStripMenuItem.Name = "cameraDelayToolStripMenuItem";
+            this.cameraDelayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cameraDelayToolStripMenuItem.Text = "Camera Delay";
             // 
-            // horizontalVerticalToolStripMenuItem
+            // showFpsToolStripMenuItem
             // 
-            this.horizontalVerticalToolStripMenuItem.Name = "horizontalVerticalToolStripMenuItem";
-            this.horizontalVerticalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.horizontalVerticalToolStripMenuItem.Text = "Horizontal/Vertical";
-            this.horizontalVerticalToolStripMenuItem.Click += new System.EventHandler(this.horizontalVerticalToolStripMenuItem_Click);
+            this.showFpsToolStripMenuItem.Name = "showFpsToolStripMenuItem";
+            this.showFpsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showFpsToolStripMenuItem.Text = "Show Fps";
+            this.showFpsToolStripMenuItem.Click += new System.EventHandler(this.showFpsToolStripMenuItem_Click);
             // 
-            // allDirectionsToolStripMenuItem
+            // fpsLabel
             // 
-            this.allDirectionsToolStripMenuItem.Name = "allDirectionsToolStripMenuItem";
-            this.allDirectionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.allDirectionsToolStripMenuItem.Text = "All Directions";
-            this.allDirectionsToolStripMenuItem.Click += new System.EventHandler(this.allDirectionsToolStripMenuItem_Click);
+            this.fpsLabel.AutoSize = true;
+            this.fpsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fpsLabel.Location = new System.Drawing.Point(198, 442);
+            this.fpsLabel.Name = "fpsLabel";
+            this.fpsLabel.Size = new System.Drawing.Size(44, 16);
+            this.fpsLabel.TabIndex = 4;
+            this.fpsLabel.Text = "Fps: 0";
+            this.fpsLabel.Visible = false;
             // 
-            // lossyToolStripMenuItem
+            // msToolStripMenuItem
             // 
-            this.lossyToolStripMenuItem.Name = "lossyToolStripMenuItem";
-            this.lossyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.lossyToolStripMenuItem.Text = "Lossy";
-            this.lossyToolStripMenuItem.Click += new System.EventHandler(this.lossyToolStripMenuItem_Click);
+            this.msToolStripMenuItem.Name = "msToolStripMenuItem";
+            this.msToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.msToolStripMenuItem.Text = "100ms";
+            this.msToolStripMenuItem.Click += new System.EventHandler(this.msToolStripMenuItem_Click);
             // 
-            // horizontalOnlyToolStripMenuItem
+            // msToolStripMenuItem1
             // 
-            this.horizontalOnlyToolStripMenuItem.Name = "horizontalOnlyToolStripMenuItem";
-            this.horizontalOnlyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.horizontalOnlyToolStripMenuItem.Text = "Horizontal Only";
-            this.horizontalOnlyToolStripMenuItem.Click += new System.EventHandler(this.horizontalOnlyToolStripMenuItem_Click);
+            this.msToolStripMenuItem1.Name = "msToolStripMenuItem1";
+            this.msToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.msToolStripMenuItem1.Text = "50ms";
+            this.msToolStripMenuItem1.Click += new System.EventHandler(this.msToolStripMenuItem1_Click);
             // 
-            // verticalOnlyToolStripMenuItem
+            // msToolStripMenuItem2
             // 
-            this.verticalOnlyToolStripMenuItem.Name = "verticalOnlyToolStripMenuItem";
-            this.verticalOnlyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.verticalOnlyToolStripMenuItem.Text = "Vertical Only";
-            this.verticalOnlyToolStripMenuItem.Click += new System.EventHandler(this.verticalOnlyToolStripMenuItem_Click);
+            this.msToolStripMenuItem2.Name = "msToolStripMenuItem2";
+            this.msToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.msToolStripMenuItem2.Text = "15ms";
+            this.msToolStripMenuItem2.Click += new System.EventHandler(this.msToolStripMenuItem2_Click);
+            // 
+            // msToolStripMenuItem3
+            // 
+            this.msToolStripMenuItem3.Name = "msToolStripMenuItem3";
+            this.msToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.msToolStripMenuItem3.Text = "10ms";
+            this.msToolStripMenuItem3.Click += new System.EventHandler(this.msToolStripMenuItem3_Click);
+            // 
+            // msToolStripMenuItem4
+            // 
+            this.msToolStripMenuItem4.Name = "msToolStripMenuItem4";
+            this.msToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.msToolStripMenuItem4.Text = "3ms";
+            this.msToolStripMenuItem4.Click += new System.EventHandler(this.msToolStripMenuItem4_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 464);
+            this.Controls.Add(this.fpsLabel);
             this.Controls.Add(this.pictureBoxOutput);
             this.Controls.Add(this.pictureBoxInput);
             this.Controls.Add(this.menuStrip1);
@@ -347,6 +432,15 @@ namespace ImageProcessingActivity
         private System.Windows.Forms.ToolStripMenuItem lossyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horizontalOnlyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verticalOnlyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cameraDelayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showFpsToolStripMenuItem;
+        private System.Windows.Forms.Label fpsLabel;
+        private System.Windows.Forms.ToolStripMenuItem msToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem msToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem msToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem msToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem msToolStripMenuItem4;
     }
 }
 
